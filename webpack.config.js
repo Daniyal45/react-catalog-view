@@ -5,7 +5,7 @@ module.exports = {
   entry: "./src/webpack-index.js",
   mode: "production",
   output: {
-    filename: "table.js",
+    filename: "catalog.js",
     path: path.resolve(__dirname, "dist"),
     libraryTarget: "commonjs2",
   },
@@ -19,6 +19,12 @@ module.exports = {
       {
         test: /\.css$/i,
         use: ["style-loader", "css-loader"],
+      },
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        use: [
+          'file-loader'
+        ]
       },
     ],
   },

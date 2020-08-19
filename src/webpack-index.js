@@ -1,4 +1,4 @@
 
-import Table from "./components/table/Table";
-export default Table;
+import Catalog from "./components/catalog/Catalog";
+export default Catalog;
 
