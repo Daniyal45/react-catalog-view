@@ -1,6 +1,6 @@
-# React Table Lite
+# React Catalog View
 
-A lightweight easy to use and easily customizable React Component for rendering a table from JSON with minimal code.
+React component to render catalog view for products, services or any other E-commerce applications. 
 
 ### Features:
 
