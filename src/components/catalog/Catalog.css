@@ -1,0 +1,241 @@
+
+  /* Custom Grid */
+/******************/
+.rcv-container {
+	font-family: Helvetica;	
+	flex-flow: row wrap;	
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+	display: flex;
+	border: 1px solid black;
+	width:100%
+  }
+  
+  .rcv-object {
+	width: 100px;	
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-grow:0;
+	flex-shrink:0;
+	margin: 5px;
+  }
+  
+  .rcv-card-sm{
+	  width:230px;
+  }
+  .rcv-card-md{
+	  width:380px;
+  }
+  .rcv-card-lg{
+	  width: 516px;
+  }
+  
+  .rcv-object-sm{
+	  width:270px;
+	  margin: 15px 0;
+  }
+  .rcv-object-md{
+	  width:415px;
+	  margin: 15px 0;
+  }
+  .rcv-object-lg{
+	  width: 588px;
+	  margin: 15px 0;
+  }
+  
+  .rcv-product-price{
+	  display:flex;
+	  margin:6px 5px;
+  }
+  .rcv-original{
+	  margin:2px;
+	  font-weight:bold;
+  }
+  .rcv-discount{
+	 margin:2px;
+	 font-weight:bold;
+  }
+  .rcv-strike{
+	font-weight:unset;
+	text-decoration: line-through;
+	font-size: 0.89em;
+  }
+
+  .rcv-product-buttons{
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+  }
+
+  .rcv-product-buttons button {
+	background-color: #9b4dca;
+	border: 0.1rem solid #9b4dca;
+	border-radius: .4rem;
+	color: #fff;
+	cursor: pointer;	
+	font-weight: 700;
+	height: 2.6em;
+	letter-spacing: .1rem;	
+	text-transform: uppercase;	
+	margin: 2px 0;
+}
+
+  .rcv-product-buttons button:hover {
+	background-color: #606c76;
+	border-color: #606c76;
+	color: #fff;
+	outline: 0;
+  }
+
+  
+  @media (max-width: 575px) {
+	  .rcv-object-sm,
+	  .rcv-object-md,
+	  .rcv-object-lg{
+		  width:100%;
+	  }
+	  .rcv-card-sm, 
+	  .rcv-card-md, 
+	  .rcv-card-lg{
+		  width: 90%;
+	  }
+	  .rcv-product-buttons button {
+		  min-height:2em;
+		  margin:  2px;
+		  height:unset;
+		  font-size: 0.6em;
+		  padding: 5px 13px;
+	  }
+	  .rcv-product-buttons{
+		  flex-direction: unset;
+	  }
+  }
+  
+  /******************/
+  /* Card Style */
+  .rcv-catalog-card {
+	  box-shadow: 0px 0px 6px -1px #888;
+	  padding: 12px;
+  }
+
+  .rcv-card-text{
+	flex-direction: column;
+  }
+
+  /* Small Card */
+
+  .rcv-card-sm .rcv-product-image-container{
+	  width: 220px;
+	  margin: 0 5px;
+  }
+  .rcv-card-sm .rcv-product-image-container > img{
+	  object-fit: fill;
+	  width: 100%;
+	  height: 150px;
+  }
+  .rcv-card-sm .rcv-product-title{
+		margin: 0 5px;
+		color:#4d4d4d;
+  }
+  .rcv-card-sm .rcv-product-description{
+	  font-size: 0.85em;
+	  color:#4d4d4d;
+	  opacity: 0.6;
+	  text-overflow: ellipsis;
+	  overflow: hidden;
+	  white-space: nowrap;
+	  max-width: 230px;
+  }
+
+  .rcv-card-md .rcv-product-description{
+	font-size: 0.85em;
+	color:#4d4d4d;
+	opacity: 0.6;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	max-width: 380px;
+}
+
+.rcv-card-lg .rcv-product-description{
+	font-size: 0.85em;
+	color:#4d4d4d;
+	opacity: 0.6;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	max-width: 516px;
+}
+
+  /* Medium Card */
+  
+  .rcv-card-md .rcv-product-image-container{
+	  width: 360px;
+	  margin: 0 10px;
+  }
+  .rcv-card-md .rcv-product-image-container > img{
+	  object-fit: fill;
+	  width: 100%;
+	  height: 220px;
+  }
+  
+  /* Large Card */
+  
+  .rcv-card-lg .rcv-product-image-container{
+	  width: 500px;
+	  margin: 0 8px;
+  }
+  .rcv-card-lg .rcv-product-image-container > img{
+	  object-fit: fill;
+	  width: 100%;
+	  height: 340px;
+  }
+  
+  @media (max-width: 575px){
+	  .rcv-card-content{ display:flex; }
+	  .rcv-card-sm .rcv-product-image-container > img,
+	  .rcv-card-md .rcv-product-image-container > img,
+	  .rcv-card-lg .rcv-product-image-container > img{		
+		  width: 100%;		
+		  margin-left: 0;
+	  }
+	  .rcv-card-sm .rcv-product-image-container,
+	  .rcv-card-md .rcv-product-image-container,
+	  .rcv-card-lg .rcv-product-image-container{
+		  width:50%
+	  }	
+	  .rcv-card-sm .rcv-product-description,
+	  .rcv-card-md .rcv-product-description,
+	  .rcv-card-lg .rcv-product-description{
+		max-width: 200px;
+	  }
+	  .rcv-product-buttons{
+		  justify-content: left;
+	  }
+	  .rcv-card-md .rcv-product-description{
+		height: 98px;
+		font-size: 0.85em;
+		opacity: 0.6;
+		text-overflow: unset;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: pre-wrap;		  		  		
+	}	  
+	  .rcv-card-lg .rcv-product-description{
+		  height: 210px;
+		  font-size: 0.85em;
+		  opacity: 0.6;
+		  text-overflow: unset;
+		  overflow: hidden;
+		  text-overflow: ellipsis;
+		  white-space: pre-wrap;		  		  		
+	  }
+	.rcv-product-title h4{		
+		text-overflow: ellipsis;
+		overflow: hidden;
+		white-space: nowrap;
+		max-width: 200px;
+	}
+  }

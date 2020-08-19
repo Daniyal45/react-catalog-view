@@ -1,0 +1,123 @@
+
+  /* Custom Grid */
+/******************/
+.rcv-container {
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  display: flex;
+  border: 1px solid black;
+  width:100%
+}
+
+.rcv-object {
+  width: 100px;
+  height: 100px;  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.rcv-card-sm{
+	width:230px;
+}
+.rcv-card-md{
+	width:380px;
+}
+.rcv-card-lg{
+	width: 516px;
+}
+
+.rcv-object-sm{
+	width:270px;
+	margin: 45px 0;
+}
+.rcv-object-md{
+	width:415px;
+	margin: 85px 0;
+}
+.rcv-object-lg{
+	width: 588px;
+	margin: 145px 0;
+}
+
+@media (max-width: 575px) {
+	.rcv-object-sm,
+	.rcv-object-md,
+	.rcv-object-lg{
+		width:100%;
+	}
+	.rcv-card-sm, 
+	.rcv-card-md, 
+	.rcv-card-lg{
+		width: 90%;
+	}
+}
+
+/******************/
+/* Card Style */
+.rcv-catalog-card {
+	box-shadow: 0px 0px 8px -1px #888;
+	padding: 12px;
+}
+
+/* Small Card */
+.rcv-card-sm .rcv-card-content{
+
+}
+.rcv-card-sm .rcv-product-image-container{
+	width: 220px;
+	margin: 0 5px;
+}
+.rcv-card-sm .rcv-product-image-container > img{
+	object-fit: fill;
+	width: 100%;
+	height: 150px;
+}
+
+/* Medium Card */
+
+.rcv-card-md .rcv-card-content{
+
+}
+.rcv-card-md .rcv-product-image-container{
+	width: 360px;
+	margin: 0 10px;
+}
+.rcv-card-md .rcv-product-image-container > img{
+	object-fit: fill;
+	width: 100%;
+	height: 220px;
+}
+
+/* Large Card */
+
+.rcv-card-lg .rcv-card-content{
+
+}
+.rcv-card-lg .rcv-product-image-container{
+	width: 500px;
+	margin: 0 8px;
+}
+.rcv-card-lg .rcv-product-image-container > img{
+	object-fit: fill;
+	width: 100%;
+	height: 340px;
+}
+
+@media (max-width: 575px){
+	.rcv-card-content{ display:flex; }
+	.rcv-card-sm .rcv-product-image-container > img,
+	.rcv-card-md .rcv-product-image-container > img,
+	.rcv-card-lg .rcv-product-image-container > img{		
+		width: 100%;		
+		margin-left: 0;
+	}
+	.rcv-card-sm .rcv-product-image-container,
+	.rcv-card-md .rcv-product-image-container,
+	.rcv-card-lg .rcv-product-image-container{
+		width:50%
+	}	
+}
