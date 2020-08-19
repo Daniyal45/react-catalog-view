@@ -59,6 +59,7 @@ export default class Main extends React.Component {
             btnTwoHandler = {this.someFunction.bind(this,79)}            
             btnOneText="Details"
             btnTwoText="Purchase Now"
+            skeletonCards={"tete"}
             contentKeys={{             
               imgKey:"product_img",
               cardTitleKey:"name",

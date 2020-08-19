@@ -27,6 +27,7 @@ export default class Catalog extends Component {
 			productArray:[],
 			contentKeys:{},
 			cardSize:"md",
+			skeletonCards : 0,
 			btnOneText: "View",
 			btnTwoText: "Add to Cart",			
 		}
@@ -48,6 +49,7 @@ export default class Catalog extends Component {
 		let btnOneText = "View";
 		let btnTwoText = "Add to Cart";
 		let contentKeys = {};
+		let skeletonCards = 0;
 		if (this.props.data === undefined || !Array.isArray(this.props.data)){
 			data = [];
 			console.warn("'data' is a required prop. For more details \n "+ PACKAGE_DOCUMENT_PAGE);
@@ -66,13 +68,15 @@ export default class Catalog extends Component {
 		btnOneHandler = this.props.btnOneHandler === undefined ? btnOneHandler : this.props.btnOneHandler;
 		btnTwoHandler = this.props.btnTwoHandler === undefined ? btnTwoHandler : this.props.btnTwoHandler;
 		contentKeys = this.props.contentKeys === undefined ? {} : this.props.contentKeys;
+		skeletonCards = this.props.skeletonCards === undefined || isNaN(this.props.skeletonCards) ? 0 : this.props.skeletonCards;
 		
 		this.setState( { 
 				productArray: data,
 				cardSize: cardSize,	
 				btnOneText:btnOneText,
 				btnTwoText:btnTwoText,
-				contentKeys:contentKeys		
+				contentKeys:contentKeys,
+				skeletonCards:skeletonCards	
 		});
 	}
 
@@ -190,7 +194,8 @@ export default class Catalog extends Component {
 		)
 	}
 
-	GenerateSkeletonView = (numberOfCards) => {
+	GenerateSkeletonView = () => {
+		let numberOfCards = this.state.skeletonCards;
 		const cards = Array.apply(null, Array(numberOfCards))
 		return (
 			<div className="rcv-container">
@@ -207,11 +212,15 @@ export default class Catalog extends Component {
 	MasterCatalogView = () => {
 		return(
 			<>
-				{this.GenerateCatalogView()}
+				{this.state.skeletonCards ?
+					this.GenerateSkeletonView()
+					:
+					this.GenerateCatalogView()
+				}
 			</>
 		)
 	}
-	
+
 	render() {
 		return (
 			<>
