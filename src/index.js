@@ -1,5 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Catalog from "./components/catalog/Catalog";
+import Main from "./components/Main"
 
-ReactDOM.render(<Catalog />, document.getElementById("root"));
+ReactDOM.render(<Main />, document.getElementById("root"));
