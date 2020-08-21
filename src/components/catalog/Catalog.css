@@ -1,5 +1,6 @@
 /* Custom Grid */
 /******************/
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;400&display=swap');
 .rcv-container {
   font-family: Helvetica;
   flex-flow: row wrap;
@@ -7,8 +8,10 @@
   align-items: center;
   align-content: center;
   display: flex;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   width: 100%;
+  /* overflow: auto;
+  height: inherit; */
 }
 
 
@@ -275,6 +278,10 @@
   opacity: 0.3;
   position: relative;
   overflow: hidden;
+  user-select: none; /* Standard */
+  -webkit-user-select: none; /* Safari */        
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */  
 }
 .skeleton-animate {
   content: "";
@@ -344,3 +351,44 @@ button.skeleton:hover {
 .rcv-btn-one-custom
 .rcv-btn-two-custom
 */
+
+/* .rcv-btn-one-custom{
+  background-color:#5d5e8a;
+  border:none
+}
+.rcv-catalog-card-custom{border-radius:12px; background: #27273a; box-shadow: none;}
+.rcv-product-image-container-custom>img {border-radius:12px;}
+.rcv-product-text-custom,
+.rcv-product-name-custom,
+.rcv-product-description-custom,
+.rcv-original-price-custom,
+.rcv-discount-price-custom{
+  color:#FFFFFF;
+}
+.rcv-container-custom{background-color: rgb(62, 59, 66);} */
+
+/* .blue{ background:DarkOrchid; padding:15px;opacity:0.5; border:none; padding:5px; font-size: 1.5em;margin:2px; color:black;}
+.red{ background:DarkOrchid; color:white;padding:15px;border:none; padding:5px; margin:2px; font-size: 1.5em;}
+.blue:focus, .red:focus, .red:active, .blue:active{border:none; outline:none; }
+label {font-size:20px;} */
+
+
+.test-view-withnav li{
+  padding: 12px 23px;
+  border-bottom: 1px solid rgb(191, 191, 191);
+  text-transform: uppercase;
+}
+.test-view-withnav #sidenav{
+  background:#f7f5f7
+}
+
+.test-view-withnav ul {
+  list-style-type: none;
+  margin-left: -40px;
+ }
+
+ body{
+   margin:0;
+   padding: 0;
+   font-family: 'Lato', Courier, monospace !important;
+ }

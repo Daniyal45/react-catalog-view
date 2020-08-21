@@ -13,7 +13,8 @@ export default class Main extends React.Component {
   }
 
   componentDidMount = () => {
-      this.getData();
+      this.getLocalApiData();
+      //this.getLiveApiData();
   }
 
   someFunction(arg1,e,data){
@@ -22,66 +23,106 @@ export default class Main extends React.Component {
     console.log("row",data);
   }
 
-  getData(){
-    this.setState({loading:5});
-    //const url = "http://api.tvmaze.com/shows";
+  getLocalApiData(){
+    this.setState({loading:5});   
     const url = "http://192.168.1.125:3000/api/testData";
 		fetch(url,{method:"GET"})
 			.then(response => response.json())
-			.then((result)=>{
-					// let custom = [];
-					// result.data.forEach((element,index) => {						
-					// 	if (index > 10){
-					// 		return;
-					// 	}
-					// 	else{
-          //     element["product_img"] = element.image["original"];
-          //     custom.push(element);
-          //   }
-					// });
-					this.setState({rawData:result.data, loading: 0});
+			.then((result)=>{				
+					this.setState({
+            rawData:result.data, 
+            loading: 0
+          });
 				}
 			)
     }
 
+  getLiveApiData() {
+    this.setState({ loading: 5 });
+    const url = "http://api.tvmaze.com/shows";    
+    fetch(url, { method: "GET" })
+      .then(response => response.json())
+      .then((result) => {
+        let custom = [];
+        result.forEach((element,index) => {						
+        	if (index > 10){
+        		return;
+        	}
+        	else{
+            element["product_img"] = element.image["original"];
+            custom.push(element);
+          }
+        });
+        this.setState({ 
+          rawData: custom, 
+          loading: 0 
+        });
+      }
+      )
+  }
+
     handleSizeChange(e){
-      this.setState({ size: e.target.value });
+      this.setState({ size: e });
     }
+    
+    
+  DumpCatalogView() {
+    return (
+      <div>
+        {/* <label htmlFor="card-size" style={{ margin: "5px 5px" }}>Size:</label>
+        <button className={this.state.size === "sm" ? "red" : "blue"} onClick={(e) => { this.handleSizeChange("sm") }} value="sm">small</button>
+        <button className={this.state.size === "md" ? "red" : "blue"} onClick={(e) => { this.handleSizeChange("md") }} value="md">medium</button>
+        <button className={this.state.size === "lg" ? "red" : "blue"} onClick={(e) => { this.handleSizeChange("lg") }} value="lg">large</button> */}
+        <Catalog
+          data={this.state.rawData}
+          cardSize={this.state.size}
+          btnOneHandler={this.someFunction.bind(this, 78)}
+          btnTwoHandler={this.someFunction.bind(this, 79)}
+          btnOneText="View"
+          btnTwoText="Purchase Now"
+          skeleton={this.state.loading}
+          // contentKeys={{
+          //   imgKey: "product_img",
+          //   cardTitleKey: "name",
+          //   cardDescriptionKey: "summary",
+          //   priceKey: "weight",
+          //   discountedPriceKey: "weight"
+          // }}
+        contentKeys={{             
+          imgKey:"image",
+          cardTitleKey:"title",
+          cardDescriptionKey:"description",
+          priceKey:"price",
+          discountedPriceKey:"discounted",
+          priceCurrencyKey:"currency",
+          discountCurrencyKey:"currency",
+        }}            
+        />
+      </div>
+    )
+  }
     render(){
       return(
-        <div>
-          {/* <label htmlFor="card-size">Size:</label>
-          <select id="card-size" onChange={(e)=>{this.handleSizeChange(e)}}>
-              <option value="sm">small</option>
-              <option value="md">medium</option>
-              <option value="lg">large</option>
-          </select> */}
-          <Catalog 
-            data={this.state.rawData}            
-            cardSize={this.state.size}
-            btnOneHandler = {this.someFunction.bind(this,78)}
-            btnTwoHandler = {this.someFunction.bind(this,79)}            
-            btnOneText="Details"
-            btnTwoText="Add to cart"           
-            skeletonCards={this.state.loading}
-            // contentKeys={{             
-            //   imgKey:"product_img",
-            //   cardTitleKey:"name",
-            //   cardDescriptionKey:"summary",
-            //   priceKey:"weight",
-            //   discountedPriceKey:"weight"
-            // }}    
-            contentKeys={{             
-              imgKey:"image",
-              cardTitleKey:"title",
-              cardDescriptionKey:"description",
-              priceKey:"price",
-              discountedPriceKey:"discounted",
-              priceCurrencyKey:"currency",
-              discountCurrencyKey:"currency",
-            }}            
-          />
-        </div>
+        <>
+          <div className="test-view-withnav" style={{ height: "100%" }}>
+            <div style={{ width: "100%", height: "50px", background: "#9b4dca", display:"flex" , alignItems:'center', color: "white" }}>
+              <div style={{ fontSize: "1.3em", padding: "0 5px", marginLeft: "20px" }}>Ecommerce Store </div>
+            </div>
+            <div style={{ display: "flex"}}>
+              <div id='sidenav' style={{ width: "15%", height: "calc(100vh-50px)" }}>
+                <ul>
+                  <li> Home </li>
+                  <li> View Cart </li>
+                  <li> About Us </li>
+                  <li> Contact </li>
+                </ul>
+              </div>
+              <div style={{height:"400px", overflow:"auto", padding:'0 10px '}}>
+              {this.DumpCatalogView()}
+              </div>
+            </div>
+          </div>
+        </>
       )
     }
   }

@@ -28,8 +28,8 @@ export default class Catalog extends Component {
 			contentKeys:{},
 			cardSize:"md",
 			skeletonCards : 0,
-			btnOneText: "View",
-			btnTwoText: "Add to Cart",
+			btnOneText: "",
+			btnTwoText: "",
 			btnOneStyle : {},	
 			btnTwoStyle: {}		
 		}
@@ -48,8 +48,8 @@ export default class Catalog extends Component {
 	getProps = () => {
 		let data = [];
 		let cardSize = "md";
-		let btnOneText = "View";
-		let btnTwoText = "Add to Cart";
+		let btnOneText = "";
+		let btnTwoText = "";
 		let contentKeys = {};
 		let skeletonCards = 0;
 		let btnOneStyle, btnTwoStyle = {};
