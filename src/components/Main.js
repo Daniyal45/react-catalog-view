@@ -69,10 +69,10 @@ export default class Main extends React.Component {
   DumpCatalogView() {
     return (
       <div>
-        {/* <label htmlFor="card-size" style={{ margin: "5px 5px" }}>Size:</label>
+        <label htmlFor="card-size" style={{ margin: "5px 5px" }}>Size:</label>
         <button className={this.state.size === "sm" ? "red" : "blue"} onClick={(e) => { this.handleSizeChange("sm") }} value="sm">small</button>
         <button className={this.state.size === "md" ? "red" : "blue"} onClick={(e) => { this.handleSizeChange("md") }} value="md">medium</button>
-        <button className={this.state.size === "lg" ? "red" : "blue"} onClick={(e) => { this.handleSizeChange("lg") }} value="lg">large</button> */}
+        <button className={this.state.size === "lg" ? "red" : "blue"} onClick={(e) => { this.handleSizeChange("lg") }} value="lg">large</button>
         <Catalog
           data={this.state.rawData}
           cardSize={this.state.size}
@@ -101,27 +101,34 @@ export default class Main extends React.Component {
       </div>
     )
   }
+
+
+  TestEcommerceView() {
+    return (
+      <div className="test-view-withnav" style={{ height: "100%" }}>
+        <div style={{ width: "100%", height: "50px", background: "#9b4dca", display: "flex", alignItems: 'center', color: "white" }}>
+          <div style={{ fontSize: "1.3em", padding: "0 5px", marginLeft: "20px" }}>Ecommerce Store </div>
+        </div>
+        <div style={{ display: "flex" }}>
+          <div id='sidenav' style={{ width: "15%", height: "calc(100vh-50px)" }}>
+            <ul>
+              <li> Home </li>
+              <li> View Cart </li>
+              <li> About Us </li>
+              <li> Contact </li>
+            </ul>
+          </div>
+          <div style={{ height: "400px", overflow: "auto", padding: '0 10px ' }}>
+            {this.DumpCatalogView()}
+          </div>
+        </div>
+      </div>
+    )
+  }
     render(){
       return(
         <>
-          <div className="test-view-withnav" style={{ height: "100%" }}>
-            <div style={{ width: "100%", height: "50px", background: "#9b4dca", display:"flex" , alignItems:'center', color: "white" }}>
-              <div style={{ fontSize: "1.3em", padding: "0 5px", marginLeft: "20px" }}>Ecommerce Store </div>
-            </div>
-            <div style={{ display: "flex"}}>
-              <div id='sidenav' style={{ width: "15%", height: "calc(100vh-50px)" }}>
-                <ul>
-                  <li> Home </li>
-                  <li> View Cart </li>
-                  <li> About Us </li>
-                  <li> Contact </li>
-                </ul>
-              </div>
-              <div style={{height:"400px", overflow:"auto", padding:'0 10px '}}>
-              {this.DumpCatalogView()}
-              </div>
-            </div>
-          </div>
+          {this.TestEcommerceView()}
         </>
       )
     }
