@@ -12,9 +12,29 @@ export default class Main extends React.Component {
 	  };
   }
 
+  contentKeys = 
+    {             
+      imgKey:"image",
+      cardTitleKey:"title",
+      cardDescriptionKey:"description",
+      priceKey:"price",
+      discountedPriceKey:"discounted",
+      priceCurrencyKey:"currency",
+      discountCurrencyKey:"currency",
+    }
+    // {
+    //   imgKey: "product_img",
+    //   cardTitleKey: "name",
+    //   cardDescriptionKey: "summary",
+    //   priceKey: "weight",
+    //   discountedPriceKey: "weight",
+    //   priceCurrencyKey:"currency",
+    //   discountCurrencyKey:"currency",
+    // }
+
   componentDidMount = () => {
-      this.getLocalApiData();
-      //this.getLiveApiData();
+    this.getLocalApiData();
+    // this.getLiveApiData();
   }
 
   someFunction(arg1,e,data){
@@ -25,7 +45,7 @@ export default class Main extends React.Component {
 
   getLocalApiData(){
     this.setState({loading:5});   
-    const url = "http://192.168.1.125:3000/api/testData";
+    const url = "http://localhost:3000/api/testData";
 		fetch(url,{method:"GET"})
 			.then(response => response.json())
 			.then((result)=>{				
@@ -45,11 +65,12 @@ export default class Main extends React.Component {
       .then((result) => {
         let custom = [];
         result.forEach((element,index) => {						
-        	if (index > 10){
+        	if (index > 3){
         		return;
         	}
         	else{
             element["product_img"] = element.image["original"];
+            element["currency"] = "$";
             custom.push(element);
           }
         });
@@ -81,22 +102,7 @@ export default class Main extends React.Component {
           btnOneText="View"
           btnTwoText="Purchase Now"
           skeleton={this.state.loading}
-          // contentKeys={{
-          //   imgKey: "product_img",
-          //   cardTitleKey: "name",
-          //   cardDescriptionKey: "summary",
-          //   priceKey: "weight",
-          //   discountedPriceKey: "weight"
-          // }}
-        contentKeys={{             
-          imgKey:"image",
-          cardTitleKey:"title",
-          cardDescriptionKey:"description",
-          priceKey:"price",
-          discountedPriceKey:"discounted",
-          priceCurrencyKey:"currency",
-          discountCurrencyKey:"currency",
-        }}            
+          contentKeys={this.contentKeys}
         />
       </div>
     )
@@ -110,7 +116,7 @@ export default class Main extends React.Component {
           <div style={{ fontSize: "1.3em", padding: "0 5px", marginLeft: "20px" }}>Ecommerce Store </div>
         </div>
         <div style={{ display: "flex" }}>
-          <div id='sidenav' style={{ width: "15%", height: "calc(100vh-50px)" }}>
+          <div id='sidenav' style={{ width: "170px", height: "calc(100vh-50px)" }}>
             <ul>
               <li> Home </li>
               <li> View Cart </li>
@@ -118,7 +124,7 @@ export default class Main extends React.Component {
               <li> Contact </li>
             </ul>
           </div>
-          <div style={{ height: "400px", overflow: "auto", padding: '0 10px ' }}>
+          <div style={{ height: "400px", width: "calc(100% - 170px)", overflow: "auto", padding: '0 10px ' }}>
             {this.DumpCatalogView()}
           </div>
         </div>
