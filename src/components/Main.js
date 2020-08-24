@@ -1,6 +1,34 @@
 import React from "react";
 import Catalog from './catalog/Catalog';
 
+const data = [
+  {
+    id: 1,
+    title: "Canvas",
+    description: "High quality canvas shoes.",
+    price: "20",
+    discounted: "15",
+    currency: "$",
+    image: "http://domain.com/images/1.jpg",
+  },
+  {
+    id: 2,
+    title: "Sport shoes",
+    description: "Sporty shoes, durable at affordable ranges.",
+    price: "25",
+    currency: "$",
+    discounted: "15",
+    image: "http://domain.com/images/5.jpg",
+  },
+  {
+    id: 3,
+    title: "Heels",
+    description: "Fashionable trendy heels.",
+    currency: "$",
+    price: "30",
+    image: "http://domain.com/images/6.jpg",
+  },
+];
 
 export default class Main extends React.Component {
   constructor(props) {
@@ -33,7 +61,7 @@ export default class Main extends React.Component {
     // }
 
   componentDidMount = () => {
-    this.getLocalApiData();
+    // this.getLocalApiData();
     // this.getLiveApiData();
   }
 
@@ -95,7 +123,8 @@ export default class Main extends React.Component {
         <button className={this.state.size === "md" ? "red" : "blue"} onClick={(e) => { this.handleSizeChange("md") }} value="md">medium</button>
         <button className={this.state.size === "lg" ? "red" : "blue"} onClick={(e) => { this.handleSizeChange("lg") }} value="lg">large</button>
         <Catalog
-          data={this.state.rawData}
+          // data={this.state.rawData}
+          data={data}
           cardSize={this.state.size}
           btnOneHandler={this.someFunction.bind(this, 78)}
           btnTwoHandler={this.someFunction.bind(this, 79)}

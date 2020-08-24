@@ -98,7 +98,8 @@ export default class Catalog extends Component {
 								PLACEHOLDER
 								:
 								data_object[this.state.contentKeys.imgKey]
-							} 
+							}
+							onError={(e)=>{e.target.src = PLACEHOLDER;}} 
 							alt={"product-"+index} />
 					</div>
 					<div className="rcv-card-text">

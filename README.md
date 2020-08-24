@@ -4,118 +4,126 @@ React component to render catalog view for products, services or any other E-com
 
 ### Features:
 
- - **Fully Customizable:**
-    Style props and classes can be overridden easily to customize table.
-
  - **JSON data array:**
-    Accepts data array and renders them in respective table headers.
+    Accepts formatted JSON data array and renders them as cards in a catalog view.
+
+ - **Fully Customizable:**
+    Classes can be overridden easily to customize catalog view.
     
- - **Sort data by header:**
-    Accepts array of keys which matches with headers for displaying sorted table data.    
+ - **Responsive FlexBox:**
+    Based on CSS flexbox. Default view is responsive for all screens.    
 
- - **Searchable:**
-    Data can be searched by providing comma separated search strings. Specify columns to be searched using 'searchBy' props. 
+ - **Card Sizes:**
+    Cards are available in small, medium and large size.
 
- - **Data limit:**
-    Limit data rows for better performance.
+ - **Custom Action Buttons:**
+    Two action buttons with custom css, button text & custom callbacks on click event.
+    
+- **Skeleton Loading:**
+    Show custom number of skeleton content cards while loading.    
 
- - **Download Table Data:**
-    Use ‘download’ prop to enable a button that exports table data as .csv, button is also customizable, default is false.
+ - **Lightweight:**
+    No additional dependencies or CSS Framework required.
 
-#### `New!`
-
-- **Row Actions:**
-    Use ‘showAction’ prop to append a column in the end of the table which will enable user to use row operations (CRUD) like view, edit and delete, default is false.
-
-- **Custom Actions:**
-    If ‘showAction’ prop is enabled, use ‘actionTypes’ to provide which actions to display. If not provided, will display all actions.
-
-- **Actions Callback:**
-    If ‘showAction’ prop is enabled, use ‘onRowDelete’,‘onRowEdit’ and ‘onRowView’ to provide respective action callbacks. The last two args of callback will return event and row Object.
-
-- **Customize no data message:**
-    Use ‘noDataMessage’ prop to provide empty data message.
+ 
 
 ### Preview:  
  
-*Default View*
+*Card Sizes*
 
-<img src="https://1hvwng.dm.files.1drv.com/y4mKkLste69u9HLEPbqBxtQiSohJoLUeaOFHSqACla5g2p89YcZ1iRhIuO2Rtxcg1G27Cjg9xk3trgYpNwHvPul3683kDwtSFFb-rxEChStH-Q97DmH5KaJXEP-CWFkbnVzKNAzbXWPX8OzZ18Y4YBRmmRjxXtA_ggQHnh1jMXBfNZZLUsIcwIr06YnIveG_GOHN3bmvPm8N16eJFxhC_VICw?width=1439&height=429&cropmode=none" alt="react-table-lite-preview-1"/>
+<img src="https://s7.gifyu.com/images/rcv-demo-0.gif" alt="rcv-demo" />
 
-*Default View with Customized No Message*
+*Responsive on small screens*
 
-<img src="https://1hxcca.dm.files.1drv.com/y4mW8steaXrZS01mZwkXeVmFVltWTMDUsbGHRniaNMj3ADqBnz7IE5c9zkAMzaUBw5j9U1_7MyQx13VtSgkOUp-CCVU0xNox_wsVZ5QoxaPPhBme3cA5RujT4WM493RnbjtymDZATLtmDI1JYlS1mA_wW7u3Ze4WMDEuLuA-h4GCfcqCS1I0yH7HWJEUl2ANmJfSbTRF377XInSgX1Q60C4iQ?width=1386&height=119&cropmode=none" alt="react-table-lite-preview-5" />
+<img src="https://yvxw5g.dm.files.1drv.com/y4m7yt3c1-jLnu7C95UjGi-1uF2gb6d5xUvEg66oBxFs1tXC26lL2LbcugiRLQSO9WbMWkaVVNFiWqgDuYQWTurnEE4AR-Qvftf03QWOjxMATmLyHaJAYGQ_ZYh9NVx79g3DX5QO505dcUgOyJdsnPDFruhN8zh8HI0ARTftdinTY4lu1HDZBfOwN2xMfuUzIs3vmYV_e9GGXPXfTAopSYOeA?width=492&height=413&cropmode=none" alt="rcv-demo-2" />
 
-*Default View with Actions*
+*Skeleton loading*
 
-<img src="https://1hx4wq.dm.files.1drv.com/y4mQd3Rh6pTL13_ZbAjZhTYgbwLgRwcThxRWifiGFvve_ESDxsYo31nEzLcLvLaEqMd1rSMKpubDMUGHjc9A63ttjNOrkvyTYdR2Ev1FSqOuPXurKRs0dcPynMkbG4CyUhawkm6Ba8WkF0731kor9-13Q-NKRXwHhzm8NXe9Xrgs8SG1DcYjc9W3pU4-hg1_YiFFD_bOnRcD7wLKJqV4LQuHQ?width=1386&height=450&cropmode=none" alt="react-table-lite-preview-3" />
+<img src="https://s7.gifyu.com/images/rcv-demo-5.gif" alt="rcv-demo-3" />
 
-*Custom Styling*
+*With Custom CSS*
 
-<img src="https://1hvkla.dm.files.1drv.com/y4mwtm17SHzMOgaB4IeaIQRjoiaX6hEtI5otNi1uckH2yVMQ0WxVFfDCBNHzWzFQn4JtHzisDnbQLSjCyPIbFWKk40MBeP4rpDe5zJ0aGwSsAIdfI67PV35aIu90OuTUN1z6DYQ8N0QKyIu4O1jfM52UbDy_o9ttf85yQA0Z5FXCEwmHzQ8QJluZCZYQJVk58Zb9ck_uUh4zHjSbBfnd3Z5OQ?width=1439&height=241&cropmode=none" alt="react-table-lite-preview-2" />
+<img src="https://yvxbra.dm.files.1drv.com/y4mkhaZ1MA1sFZI5MQFhBG08z6T1h9Wmp4n2FdrwKwnN5Q94VQHCLpChdr4IUblFVZnQvijjfvbovV4oHOSDujU926P3niBkyBud70CqbJ4Y4-qoKDt35pgsIV7bEmleFjYcGHi_fYJvj0A5fsac3XbiSoLnEAKLKHm9Jng5qDpM0JLf40RBd2zb9gw2CEuIHO4A32ehs-B8lltdTKOdLYcyQ?width=1334&height=355&cropmode=none" alt="rcv-demo-4" />
 
-*Custom Styling and Actions*
+*E-Commerce Example*
 
-<img src="https://1hunqa.dm.files.1drv.com/y4mBTaCZHenK-IEH4nut36JXKm0lZlH_IFLXC1ItJ-DnbboszwoEQRfgrRo--0qO51WaU6ulpQPQ9agbuPbhtTGEMVkQn5ngHphLYdX6bi4Hxx4QtPk377RtAu8wMpLlf_Qaa4465ZYBQ1-bihNPh9O5hWP2muTdrcwxrhzzORmPg4-CXMHY-OI7MvPJNa9w6Xm__tRyY5nlC9EJF3rh2rAVQ?width=1258&height=339&cropmode=none" alt="react-table-lite-preview-4" />
+<img src="https://yvzcua.dm.files.1drv.com/y4mhpXvOm_6wb8vy7w5quU5Lc0R2ghFBbEvCri6yMpgoxc3wrymFaKvJaMJh6718aAvFoIidrHVro11ONCkl5UHViKGL2GeN-mrjXXBmCLW70AvGOccGHhwJLcUaRhyRnJJlrl0UV43qHjllz0-3o-7hp98i06C8N0fRq7PUsGCRUFmmHH-UcI2vYTj7raju0OLi76-tHYyoIPzLZTG3UHSXA?width=1310&height=450&cropmode=none" alt="rcv-demo-5" />
 
 ### Example:
 ```js  
     import React from 'react';
-    import Table from "react-table-lite";
+    import Catalog from "react-catalog-view";
     
-    function UserData(props){
-      let Users = 
+    function ProductData(props){
+      let products = 
        [
-         {id:1 , name:"John Doe", age:"25", email:"JohnDoe@gmail.com"},
-         {id:2 , name:"Kazuki Yashiro", age:"35", email:"Y_Kazuki@gmail.com"},
-         {id:3 , name:"Eddie Memon", age:"22", email:"Eddie254@gmail.com"},
-         {id:4 , name:"Barood Khan", age:"45", email:"BK5454@gmail.com"},
-       ];
+         {
+            id: 1,
+            title: "Canvas",
+            description: "High quality canvas shoes.",
+            price: "20",
+            discounted: "15",
+            currency: "$",
+            image: "http://domain.com/images/1.jpg",
+         },
+         {
+            id: 2,
+            title: "Sport shoes",
+            description: "Sporty shoes, durable at affordable ranges.",
+            price: "25",
+            currency: "$",
+            discounted: "15",
+            image: "http://domain.com/images/5.jpg",
+         },
+         {
+            id: 3,
+            title: "Heels",
+            description: "Fashionable trendy heels.",
+            currency: "$",
+            price: "30",
+            image: "http://domain.com/images/6.jpg",
+         }
+      ];
+
+      const CONTENT_KEYS = 
+      {             
+         imgKey: "image",
+         cardTitleKey: "title",
+         cardDescriptionKey: "description",
+         priceKey: "price",
+         discountedPriceKey: "discounted",
+         priceCurrencyKey: "currency",
+         discountCurrencyKey: "currency"
+      };
 	
       return(
-        <Table
-           data = {Users}		
-           //Array of JSONObjects(required)
-           header = {["id","name","age","email"]}  
-           // Headers should be same as data JSON Object's keys (required)
-           sortBy = {["name", "age"]}
-           // keys for sorting should be present in header array
-           searchable={true}
-           //Enable table search field
-           searchBy={["name", "email"]}
-           // keys for sorting should be present in header array
-           download = {true}
-           //Downloadable data 
-           fileName = {"Table_Data"}
-           //Default name of downloaded csv file
-           noDataMessage={"my custom no data"}
-           //Custom no data string.            
-           limit = {10}
-           //No of rows to display at a time
-           containerStyle = {}
-           //Customize table container style           
-           headerStyle = {}
-           //Customize table header style
-           rowStyle = {}
-           //Customize table row style
-           dataStyle = {}
-           //Customize table data cell style
-           showActions = {true}
-           //Enable Row Operation
-           actionTypes={["edit","delete","view"]} 
-           //Type of Row Operation (case insensitive)
-           onRowDelete={(args, event, row)=>{
-            // 'row' returns row object
-            // any arguments passed will be before 'event' and 'row'
+        <Catalog
+           data = {products}		
+           // Array of JSON Objects (required)
+           contentKeys={CONTENT_KEYS}  
+           // JSON Object defining the keys that will be 
+           // used from the data array, keys should match. (required)
+           cardSize="sm"
+           // Card sizes, sm, md and lg for small, medium  and large
+           btnOneText="View"
+           // Enter text for action button one 
+           // or pass empty string to hide.  
+           btnTwoText="Purchase Now"
+           // Enter text for action button two 
+           // or pass empty string to hide.
+           btnOneHandler={(args, event, objectData)=>{
+            // 'objectData' returns object data
+            // any arguments passed will be before 'event' 
+            // and 'objectData'
            }}
-           onRowEdit={(args, event, row)=>{
-            // 'row' returns row object
-            // any arguments passed will be before 'event' and 'row'
+           btnTwoHandleronRowView={(args, event, row)=>{
+            // 'objectData' returns object data
+            // any arguments passed will be before 'event' 
+            // and 'objectData'
            }}
-           onRowView={(args, event, row)=>{
-            // 'row' returns row object
-            // any arguments passed will be before 'event' and 'row'
-           }}
+           skeleton={0}
+           // Any non zero number will override default cards
+           // and will show that many skeleton cards.
         />
       )
   }
