@@ -1,6 +1,8 @@
 # React Catalog View
 
-React component to render catalog view for products, services or any other E-commerce applications. 
+React component to render catalog view for products, services or any other E-commerce applications.
+
+<img src="https://s7.gifyu.com/images/rcv-demo-0.gif" alt="rcv-demo" />
 
 ### Features:
 
@@ -29,10 +31,6 @@ React component to render catalog view for products, services or any other E-com
 
 ### Preview:  
  
-*Card Sizes*
-
-<img src="https://s7.gifyu.com/images/rcv-demo-0.gif" alt="rcv-demo" />
-
 *Responsive on small screens*
 
 <img src="https://yvxw5g.dm.files.1drv.com/y4m7yt3c1-jLnu7C95UjGi-1uF2gb6d5xUvEg66oBxFs1tXC26lL2LbcugiRLQSO9WbMWkaVVNFiWqgDuYQWTurnEE4AR-Qvftf03QWOjxMATmLyHaJAYGQ_ZYh9NVx79g3DX5QO505dcUgOyJdsnPDFruhN8zh8HI0ARTftdinTY4lu1HDZBfOwN2xMfuUzIs3vmYV_e9GGXPXfTAopSYOeA?width=492&height=413&cropmode=none" alt="rcv-demo-2" />
@@ -116,7 +114,7 @@ React component to render catalog view for products, services or any other E-com
             // any arguments passed will be before 'event' 
             // and 'objectData'
            }}
-           btnTwoHandleronRowView={(args, event, row)=>{
+           btnTwoHandler={(args, event, row)=>{
             // 'objectData' returns object data
             // any arguments passed will be before 'event' 
             // and 'objectData'
@@ -131,24 +129,13 @@ React component to render catalog view for products, services or any other E-com
 ### Props:
 Prop | Type | Description
 ---- | ---- | ----
-header      | Array | Array of string will be rendered as table headers (required)|
-data        | Array | Array of JSON objects to be rendered in table, keys should match with table headers (required)|
-sortBy      | Array | Array of string which matches the headers for sorting data in table body |
-searchable  | Boolean | Pass ‘true’ to enable search field |
-searchBy    | Array | Array of string which matches the headers for searching data in table body |
-download    | Boolean | Pass ‘true’ to enable download csv button |
-fileName    | String | String used as default filename for csv files when downloading 
-noDataMessage   | String | String used for 'No data' message
-limit       | Integer | Limit number of rows to display at a time
-containerStyle | Style  | Style object for parent container
-headerStyle | Style  | Style object for table header
-rowStyle    | Style  | Style object for table rows
-dataStyle   | Style  | Style object for table cells
-showActions | Boolean | Enable to show actions column
-actionTypes | Array | Name of action to enable and show array of string
-onRowDelete | callback | Callback function on row delete
-onRowEdit   | callback | Callback function on row edit
-onRowView   | callback | Callback function on row view
+data        | Array | Array of JSON objects to be rendered (required)|
+contentKeys | JSON | JSON object which matches the keys in 'data' array (required) <pre>{ <br/> imgKey: "image", <br/> cardTitleKey: "title", <br/> cardDescriptionKey: "description", <br/> priceKey: "price", <br/> discountedPriceKey: "discounted", <br/> priceCurrencyKey: "currency",<br /> discountCurrencyKey: "currency" <br/>} </pre>
+cardSize  | String | Card sizes, sm, md and lg for small, medium  and large |
+btnOneText    | String | Enter text for action button one or pass empty string to hide |
+btnTwoText    | String | Enter text for action button two or pass empty string to hide |
+btnOneHandler | callback | Callback function for onClick
+btnTwoHandler | callback | Callback function for onClick
 
 ### CSS Classes:
 
@@ -156,15 +143,20 @@ Default CSS classes for easy css customization.
 
 ClassName | Description
 ---- | ----
-react-table-lite-container | For parent container. 
-react-table-lite-header    | For table header. 
-rtl-table-search-form      | For search field. 
-rtl-table-download-btn-css | For CSV download button. 
-rtl-action-btn-container   | For action button container.
-rtl-action-btn-delete-btn  | For delete action button. 
-rtl-action-btn-edit-btn    | For edit action button.
-rtl-action-btn-view-btn    | For view action button.
- 
+rcv-container-custom | For parent container
+rcv-object-sm-custom <br/> @media(max-width: 575px) | For container of small cards
+rcv-object-md-custom <br/> @media(max-width: 575px) | For container of medium cards
+rcv-object-lg-custom <br/> @media(max-width: 575px) | For container of large cards
+rcv-catalog-card-custom | For customizing card 
+rcv-product-image-container-custom | For product image container 
+rcv-product-image-container-custom>img | For product image
+rcv-product-text-custom | For product text
+rcv-product-name-custom | For product name
+rcv-product-description-custom | For product description
+rcv-original-price-custom | For original price text
+rcv-discount-price-custom | For discount price text
+rcv-btn-one-custom | For button one 
+rcv-btn-two-custom | For button two 
 
 ### Support:  
 For support contact: adnanali17official@gmail.com, daniyal_09.2005@hotmail.com
