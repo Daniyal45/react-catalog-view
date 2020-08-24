@@ -1,14 +1,23 @@
 {
     "name": "react-catalog-view",
     "version": "1.0.0",
-    "license": "MIT",
+    "license": "",
     "keywords": [
+        "react-catalog",
+        "catalog-view",
+        "product-cards",
+        "card",
+        "product-view",
+        "ecommerce",
+        "responsive",
+        "skeleton",
         "js",
         "javascript",
         "json",
-        "react"
+        "react",
+        "lightweight"
     ],
-    "main": "./dist/table.js",
+    "main": "./dist/catalog.js",
     "dependencies": {
         "react": "^16.13.1",
         "react-dom": "^16.13.1",
