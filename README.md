@@ -8,6 +8,12 @@ React component to render catalog view for products, services or any other E-com
 
 <img src="https://s7.gifyu.com/images/rcv-demo-0.gif" alt="rcv-demo" />
 
+### Installation:
+
+```bash
+   npm install react-catalog-view
+```
+
 ### Features:
 
  - **JSON data array:**
