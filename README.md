@@ -1,4 +1,8 @@
-# React Catalog View
+<div style="display: flex; justify-content: center;">
+   <img style="width:65%;" src="https://yvxpda.dm.files.1drv.com/y4mfy3VbPUfHHhYQQGq3lxpSlXI-K60pVH1qBXRb9uCW_helacCk7SZFYtS2TjYiXNKOc9GjhbCh6hRxvZEHbu8yAsPm8QvwO6wK3FvpQSzbsnSgOLK4xto3omoe8oXNbkCNt7bN0RywJMrOryFUPoDZDJaYCeQmlH2dAPy6fB3nq5IQZ06nLVSJAfUI7Ez0iMLhky4-AVegXqbnWQo0fpCcQ?width=572&height=520&cropmode=none" alt="logo"/>
+</div>
+
+# Introduction
 
 React component to render catalog view for products, services or any other E-commerce applications.
 
