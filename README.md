@@ -1,5 +1,5 @@
 <p align="center">
-   <img style="width:65%;" src="https://yvxpda.dm.files.1drv.com/y4mfy3VbPUfHHhYQQGq3lxpSlXI-K60pVH1qBXRb9uCW_helacCk7SZFYtS2TjYiXNKOc9GjhbCh6hRxvZEHbu8yAsPm8QvwO6wK3FvpQSzbsnSgOLK4xto3omoe8oXNbkCNt7bN0RywJMrOryFUPoDZDJaYCeQmlH2dAPy6fB3nq5IQZ06nLVSJAfUI7Ez0iMLhky4-AVegXqbnWQo0fpCcQ?width=572&height=520&cropmode=none" alt="logo"/>
+   <img style="width:400px;" src="https://yvxpda.dm.files.1drv.com/y4mfy3VbPUfHHhYQQGq3lxpSlXI-K60pVH1qBXRb9uCW_helacCk7SZFYtS2TjYiXNKOc9GjhbCh6hRxvZEHbu8yAsPm8QvwO6wK3FvpQSzbsnSgOLK4xto3omoe8oXNbkCNt7bN0RywJMrOryFUPoDZDJaYCeQmlH2dAPy6fB3nq5IQZ06nLVSJAfUI7Ez0iMLhky4-AVegXqbnWQo0fpCcQ?width=572&height=520&cropmode=none" alt="logo"/>
 </p>
 
 # Introduction
@@ -36,8 +36,9 @@ React component to render catalog view for products, services or any other E-com
 ### Preview:  
  
 *Responsive on small screens*
-
-<img src="https://yvxw5g.dm.files.1drv.com/y4m7yt3c1-jLnu7C95UjGi-1uF2gb6d5xUvEg66oBxFs1tXC26lL2LbcugiRLQSO9WbMWkaVVNFiWqgDuYQWTurnEE4AR-Qvftf03QWOjxMATmLyHaJAYGQ_ZYh9NVx79g3DX5QO505dcUgOyJdsnPDFruhN8zh8HI0ARTftdinTY4lu1HDZBfOwN2xMfuUzIs3vmYV_e9GGXPXfTAopSYOeA?width=492&height=413&cropmode=none" alt="rcv-demo-2" />
+<p align="center">
+   <img src="https://yvxw5g.dm.files.1drv.com/y4m7yt3c1-jLnu7C95UjGi-1uF2gb6d5xUvEg66oBxFs1tXC26lL2LbcugiRLQSO9WbMWkaVVNFiWqgDuYQWTurnEE4AR-Qvftf03QWOjxMATmLyHaJAYGQ_ZYh9NVx79g3DX5QO505dcUgOyJdsnPDFruhN8zh8HI0ARTftdinTY4lu1HDZBfOwN2xMfuUzIs3vmYV_e9GGXPXfTAopSYOeA?width=492&height=413&cropmode=none" alt="rcv-demo-2" />
+</p>
 
 *Skeleton loading*
 
