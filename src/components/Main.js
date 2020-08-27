@@ -9,7 +9,7 @@ let data = [
     price: "20",
     discounted: "15",
     currency: "$",
-    image: "http://domain.com/images/dsd1.jpg",
+    image: "http://domain.com/images/1.jpg",
   },
   {
     id: 2,
@@ -18,7 +18,7 @@ let data = [
     price: "25",
     currency: "$",
     discounted: "15",
-    image: "http://domain.com/images/ds5.jpg",
+    image: "http://domain.com/images/5.jpg",
   },
   {
     id: 3,
@@ -26,7 +26,7 @@ let data = [
     description: "Fashionable trendy heels.",
     currency: "$",
     price: "30",
-    image: "http://domain.com/images/ds6.jpg",
+    image: "http://domain.com/images/6.jpg",
   },
 ];
 
