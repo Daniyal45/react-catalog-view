@@ -2,7 +2,8 @@ import React, { Component } from "react";
 // import PropTypes from 'prop-types';
 import "./Catalog.css";
 
-const PLACEHOLDER = require("./../../utils/svgs/placeholder.svg");
+import PLACEHOLDER from './../../utils/svgs/placeholder.svg';
+//const PLACEHOLDER = require("./../../utils/svgs/placeholder.svg");
 let CARD_CLASS = {
 	sm: "rcv-catalog-card rcv-catalog-card-custom rcv-card-sm rcv-catalog-card-custom",
 	md: "rcv-catalog-card rcv-catalog-card-custom rcv-card-md rcv-catalog-card-custom",
@@ -99,7 +100,7 @@ export default class Catalog extends Component {
 								:
 								data_object[this.state.contentKeys.imgKey]
 							} 
-							onError={(e)=>{e.target.src = PLACEHOLDER;}} 
+							onError={(e)=>{this.onError=null; e.target.src = PLACEHOLDER;}} 
 							alt={"product-"+index} />
 					</div>
 					<div className="rcv-card-text">
