@@ -1,7 +1,7 @@
 import React from "react";
 import Catalog from './catalog/Catalog';
 
-const data = [
+let data = [
   {
     id: 1,
     title: "Canvas",
@@ -37,12 +37,13 @@ export default class Main extends React.Component {
       rawData:[],
       size:'sm',
       loading:0,
+      showNav: true
 	  };
   }
 
-  contentKeys = 
-    {             
-      imgKey:"image",
+  contentKeys1 = 
+  {             
+    imgKey:"image",
       cardTitleKey:"title",
       cardDescriptionKey:"description",
       priceKey:"price",
@@ -50,25 +51,35 @@ export default class Main extends React.Component {
       priceCurrencyKey:"currency",
       discountCurrencyKey:"currency",
     }
-    // {
-    //   imgKey: "product_img",
-    //   cardTitleKey: "name",
-    //   cardDescriptionKey: "summary",
-    //   priceKey: "weight",
-    //   discountedPriceKey: "weight",
-    //   priceCurrencyKey:"currency",
-    //   discountCurrencyKey:"currency",
-    // }
+  contentKeys2 = 
+    {
+      imgKey: "product_img",
+      cardTitleKey: "name",
+      cardDescriptionKey: "summary",
+      priceKey: "weight",
+      discountedPriceKey: "weight",
+      priceCurrencyKey:"currency",
+      discountCurrencyKey:"currency",
+    }
 
   componentDidMount = () => {
     // this.getLocalApiData();
-    // this.getLiveApiData();
+    this.getLiveApiData();
   }
 
   someFunction(arg1,e,data){
     console.log("arg1",arg1);
     console.log("e",e);
     console.log("row",data);
+  }
+  
+  remove(e,objectData){
+    // console.log("data",data);
+    data = data.filter(project=>project.id !== objectData.id);
+    let rawData = this.state.rawData.filter(project=>project.id !== objectData.id);
+    this.setState({
+      rawData: rawData
+    });
   }
 
   getLocalApiData(){
@@ -87,7 +98,9 @@ export default class Main extends React.Component {
 
   getLiveApiData() {
     this.setState({ loading: 5 });
-    const url = "http://api.tvmaze.com/shows";    
+    const url = "http://api.tvmaze.com/shows";
+    setTimeout(()=>{
+
     fetch(url, { method: "GET" })
       .then(response => response.json())
       .then((result) => {
@@ -108,6 +121,9 @@ export default class Main extends React.Component {
         });
       }
       )
+
+    },5000);    
+
   }
 
     handleSizeChange(e){
@@ -127,11 +143,11 @@ export default class Main extends React.Component {
           data={data}
           cardSize={this.state.size}
           btnOneHandler={this.someFunction.bind(this, 78)}
-          btnTwoHandler={this.someFunction.bind(this, 79)}
+          btnTwoHandler={this.remove.bind(this)}
           btnOneText="View"
-          btnTwoText="Purchase Now"
+          btnTwoText="Remove"
           skeleton={this.state.loading}
-          contentKeys={this.contentKeys}
+          contentKeys={this.contentKeys1}
         />
       </div>
     )
@@ -142,10 +158,52 @@ export default class Main extends React.Component {
     return (
       <div className="test-view-withnav" style={{ height: "100%" }}>
         <div style={{ width: "100%", height: "50px", background: "#9b4dca", display: "flex", alignItems: 'center', color: "white" }}>
-          <div style={{ fontSize: "1.3em", padding: "0 5px", marginLeft: "20px" }}>Ecommerce Store </div>
+          <div style={{padding:"5px"}} onClick={()=>{this.setState({showNav:!this.state.showNav});}}>
+            <div style={{ width:"7px", backgroundColor:"white",  border:"solid 1px white", padding:"0px 7px" , margin: "4px"}}/>
+            <div style={{ width:"7px", backgroundColor:"white",  border:"solid 1px white", padding:"0px 7px" , margin: "4px"}}/>
+            <div style={{ width:"7px", backgroundColor:"white",  border:"solid 1px white", padding:"0px 7px" , margin: "4px"}}/>
+          </div>
+          <div style={{ display:"flex", width:"100%", justifyContent:"space-between" }}>
+            <div style={{ fontSize: "1.3em", padding: "0 5px", marginLeft: "20px" }}>Ecommerce Store </div>
+            <div 
+              style={{ display:"flex", marginRight:"15px" }}
+            >
+              <div style={{marginRight:"10px", marginTop:"2px"}}>
+                <div
+                style={{ 
+                  height:"12px",
+                  width:"12px",
+                  border:"2px solid white",
+                  borderRadius:"100px",
+                }}
+                />            
+                <div
+                style={{ 
+                  height: "8px",
+                  borderLeft: "2px solid white",
+                  position: "relative",
+                  left: "13px",
+                  transform: "rotate(-45deg)",
+                  bottom: "9px"
+                }}
+                />
+              </div>
+              <input
+
+                style={{
+                  backgroundColor: "transparent",
+                  color: "white",
+                  outline: "none",
+                  border: "none",
+                  borderBottom: "1px solid",
+                  padding: "0 5px",
+                }}
+              />
+            </div>
+          </div>
         </div>
-        <div style={{ display: "flex" }}>
-          <div id='sidenav' style={{ width: "170px", height: "calc(100vh-50px)" }}>
+        <div style={{ display: "flex", height: "calc(100vh - 50px)" }}>
+          <div id='sidenav' style={{ display: this.state.showNav? "unset": "none" , width: "170px", height: "calc(100vh-50px)" }}>
             <ul>
               <li> Home </li>
               <li> View Cart </li>
@@ -153,7 +211,7 @@ export default class Main extends React.Component {
               <li> Contact </li>
             </ul>
           </div>
-          <div style={{ height: "400px", width: "calc(100% - 170px)", overflow: "auto", padding: '0 10px ' }}>
+          <div style={{ width: this.state.showNav? "calc(100% - 170px)" : "100%", overflow: "auto", padding: '0 10px ' }}>
             {this.DumpCatalogView()}
           </div>
         </div>

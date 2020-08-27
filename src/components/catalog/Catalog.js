@@ -71,7 +71,7 @@ export default class Catalog extends Component {
 		btnOneHandler = this.props.btnOneHandler === undefined ? btnOneHandler : this.props.btnOneHandler;
 		btnTwoHandler = this.props.btnTwoHandler === undefined ? btnTwoHandler : this.props.btnTwoHandler;
 		contentKeys = this.props.contentKeys === undefined ? {} : this.props.contentKeys;
-		skeletonCards = this.props.skeletonCards === undefined || isNaN(this.props.skeletonCards) ? 0 : this.props.skeletonCards;		
+		skeletonCards = this.props.skeleton === undefined || isNaN(this.props.skeleton) ? 0 : this.props.skeleton;		
 		btnOneStyle = this.props.btnOneStyle === undefined ? {} : this.props.btnOneStyle;
 		btnTwoStyle = this.props.btnTwoStyle === undefined ? {} : this.props.btnTwoStyle;
 
