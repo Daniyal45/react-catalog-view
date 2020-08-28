@@ -143,6 +143,7 @@ Prop | Type | Description
 data        | Array | Array of JSON objects to be rendered (required)|
 contentKeys | JSON | JSON object which matches the keys in 'data' array (required) <pre>{ <br/> imgKey: "image", <br/> cardTitleKey: "title", <br/> cardDescriptionKey: "description", <br/> priceKey: "price", <br/> discountedPriceKey: "discounted", <br/> priceCurrencyKey: "currency",<br /> discountCurrencyKey: "currency" <br/>} </pre>
 cardSize  | String | Card sizes, sm, md and lg for small, medium  and large |
+skeleton  | number | Any non zero number will generate that many skeleton cards, skeleton cards over rides default view|
 btnOneText    | String | Enter text for action button one or pass empty string to hide |
 btnTwoText    | String | Enter text for action button two or pass empty string to hide |
 btnOneHandler | callback | Callback function for onClick
