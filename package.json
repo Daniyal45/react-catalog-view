@@ -1,6 +1,6 @@
 {
     "name": "react-catalog-view",
-    "version": "1.0.6",
+    "version": "1.0.7-alpha1",
     "license": "MIT",
     "author": "Daniyal Hasan Shah, Adnan Ali",
     "description": "React component to render catalog view for products, services or any other E-commerce applications.",
@@ -19,18 +19,21 @@
         "react",
         "lightweight"
     ],
-    "main": "./dist/catalog.js",
+    "main": "./dist/catalog.cjs.js",
+    "source": "src/build-index.js",
     "dependencies": {
-        "react": "^16.13.1",
-        "react-dom": "^16.13.1",
-        "react-scripts": "3.4.3"
+        "@svgr/rollup": "^5.5.0",
+        "react": "^16.14.0",
+        "react-dom": "^16.14.0"
+    },
+    "peerDependencies": {
+        "react": "^16.14.0",
+        "react-dom": "^16.14.0",
+        "@babel/runtime": "^7.15.3"
     },
     "scripts": {
-        "start": "react-scripts start",
-        "build": "webpack",
-        "test": "react-scripts test",
-        "eject": "react-scripts eject",
-        "watch": "webpack --watch"
+        "build": "rollup -c build.config.js --exports auto",
+        "watch": "rollup -c serve.config.js -w"
     },
     "eslintConfig": {
         "extends": "react-app"
@@ -48,15 +51,22 @@
         ]
     },
     "devDependencies": {
-        "@babel/core": "^7.11.0",
-        "@babel/plugin-proposal-class-properties": "^7.10.4",
-        "@babel/preset-react": "^7.10.4",
-        "css-loader": "^4.1.1",
-        "file-loader": "^6.0.0",
-        "style-loader": "^1.2.1",
-        "terser-webpack-plugin": "^3.1.0",
-        "url-loader": "^4.1.0",
-        "webpack": "^4.42.0",
-        "webpack-cli": "^3.3.12"
+        "@babel/core": "^7.15.0",
+        "@babel/plugin-transform-runtime": "^7.15.0",
+        "@babel/preset-env": "^7.15.0",
+        "@babel/preset-react": "^7.14.5",
+        "@rollup/plugin-babel": "^5.3.0",
+        "@rollup/plugin-commonjs": "^20.0.0",
+        "@rollup/plugin-node-resolve": "^13.0.4",
+        "@rollup/plugin-replace": "^3.0.0",
+        "react": "^16.14.0",
+        "react-dom": "^16.14.0",
+        "rollup": "^2.56.2",
+        "rollup-plugin-livereload": "^2.0.5",
+        "rollup-plugin-peer-deps-external": "^2.2.4",
+        "rollup-plugin-serve": "^1.1.0",
+        "rollup-plugin-styles": "^3.14.1",
+        "rollup-plugin-terser": "^7.0.2",
+        "rollup-plugin-url": "^3.0.1"
     }
 }

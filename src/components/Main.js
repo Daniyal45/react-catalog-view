@@ -1,5 +1,6 @@
 import React from "react";
 import Catalog from './catalog/Catalog';
+// import Catalog from './../../dist/catalog.esm'; // test build
 
 let data = [
   {
