@@ -18,7 +18,8 @@ const OBJECT_CLASS = {
 
 const PACKAGE_DOCUMENT_PAGE = "https://www.npmjs.com/package/react-catalog-view";
 
-const nullFunction = () => { return; };
+let btnOneHandler = () => { return; };
+let btnTwoHandler = () => { return; };
 
 class Catalog extends Component {
 	constructor(props) {
@@ -72,8 +73,8 @@ class Catalog extends Component {
 		skeletonCards = this.props.skeleton === undefined || isNaN(this.props.skeleton) ? 0 : this.props.skeleton;
 		btnOneText = this.props.btnOneText === undefined || typeof this.props.btnOneText !== 'string' ? btnOneText : this.props.btnOneText;
 		btnTwoText = this.props.btnTwoText === undefined || typeof this.props.btnTwoText !== 'string' ? btnTwoText : this.props.btnTwoText;
-		btnOneHandler = this.props.btnOneHandler === undefined ? nullFunction : this.props.btnOneHandler;
-		btnTwoHandler = this.props.btnTwoHandler === undefined ? nullFunction : this.props.btnTwoHandler;
+		btnOneHandler = this.props.btnOneHandler === undefined ? btnOneHandler : this.props.btnOneHandler;
+		btnTwoHandler = this.props.btnTwoHandler === undefined ? btnTwoHandler : this.props.btnTwoHandler;
 		btnOneStyle = this.props.btnOneStyle === undefined ? {} : this.props.btnOneStyle;
 		btnTwoStyle = this.props.btnTwoStyle === undefined ? {} : this.props.btnTwoStyle;
 
