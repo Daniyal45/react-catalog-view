@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import "./Catalog.css";
 
 import PLACEHOLDER from './../../utils/svgs/placeholder.svg';
-//const PLACEHOLDER = require("./../../utils/svgs/placeholder.svg");
+
 let CARD_CLASS = {
 	sm: "rcv-catalog-card rcv-catalog-card-custom rcv-card-sm rcv-catalog-card-custom",
 	md: "rcv-catalog-card rcv-catalog-card-custom rcv-card-md rcv-catalog-card-custom",
@@ -16,23 +16,23 @@ const OBJECT_CLASS = {
 	lg: "rcv-object rcv-object-lg rcv-object-lg-custom"
 };
 
-let btnOneHandler = () => { return; }
-let btnTwoHandler = () => { return; }
+const PACKAGE_DOCUMENT_PAGE = "https://www.npmjs.com/package/react-catalog-view";
 
-const PACKAGE_DOCUMENT_PAGE  = "https://www.npmjs.com/package/react-table-lite";
+let btnOneHandler = () => { return; };
+let btnTwoHandler = () => { return; };
 
-export default class Catalog extends Component {
+class Catalog extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			productArray:[],
-			contentKeys:{},
-			cardSize:"md",
-			skeletonCards : 0,
+			productArray: [],
+			contentKeys: {},
+			cardSize: "md",
+			skeletonCards: 0,
 			btnOneText: "",
 			btnTwoText: "",
-			btnOneStyle : {},	
-			btnTwoStyle: {}		
+			btnOneStyle: {},
+			btnTwoStyle: {}
 		}
 	}
 
@@ -54,125 +54,163 @@ export default class Catalog extends Component {
 		let contentKeys = {};
 		let skeletonCards = 0;
 		let btnOneStyle, btnTwoStyle = {};
-		if (this.props.data === undefined || !Array.isArray(this.props.data)){
+		if (this.props.data === undefined || !Array.isArray(this.props.data)) {
 			data = [];
-			console.warn("'data' is a required prop. For more details \n "+ PACKAGE_DOCUMENT_PAGE);
+			console.warn("'data' is a required prop. For more details \n " + PACKAGE_DOCUMENT_PAGE);
 		}
-		else
+		else {
 			data = this.props.data;
-
-		if( this.props.cardSize !== undefined && typeof this.props.cardSize !== 'string' ){
-			console.warn("'cardSize' should be valid string. For more details \n "+ PACKAGE_DOCUMENT_PAGE);
 		}
-		else
-			cardSize = this.props.cardSize===undefined?cardSize:this.props.cardSize;			
-		
+
+		if (this.props.cardSize !== undefined && typeof this.props.cardSize !== 'string') {
+			console.warn("'cardSize' should be valid string. For more details \n " + PACKAGE_DOCUMENT_PAGE);
+		}
+		else {
+			cardSize = this.props.cardSize === undefined ? cardSize : this.props.cardSize;
+		}
+
+		contentKeys = this.props.contentKeys === undefined ? {} : this.props.contentKeys;
+		skeletonCards = this.props.skeleton === undefined || isNaN(this.props.skeleton) ? 0 : this.props.skeleton;
 		btnOneText = this.props.btnOneText === undefined || typeof this.props.btnOneText !== 'string' ? btnOneText : this.props.btnOneText;
 		btnTwoText = this.props.btnTwoText === undefined || typeof this.props.btnTwoText !== 'string' ? btnTwoText : this.props.btnTwoText;
 		btnOneHandler = this.props.btnOneHandler === undefined ? btnOneHandler : this.props.btnOneHandler;
 		btnTwoHandler = this.props.btnTwoHandler === undefined ? btnTwoHandler : this.props.btnTwoHandler;
-		contentKeys = this.props.contentKeys === undefined ? {} : this.props.contentKeys;
-		skeletonCards = this.props.skeleton === undefined || isNaN(this.props.skeleton) ? 0 : this.props.skeleton;		
 		btnOneStyle = this.props.btnOneStyle === undefined ? {} : this.props.btnOneStyle;
 		btnTwoStyle = this.props.btnTwoStyle === undefined ? {} : this.props.btnTwoStyle;
 
-		this.setState( { 
-				productArray: data,
-				cardSize: cardSize,	
-				btnOneText:btnOneText,
-				btnTwoText:btnTwoText,
-				contentKeys:contentKeys,
-				skeletonCards:skeletonCards,
-				btnOneStyle: btnOneStyle,
-				btnTwoStyle: btnTwoStyle
+		this.setState({
+			productArray: data,
+			cardSize: cardSize,
+			btnOneText: btnOneText,
+			btnTwoText: btnTwoText,
+			contentKeys: contentKeys,
+			skeletonCards: skeletonCards,
+			btnOneStyle: btnOneStyle,
+			btnTwoStyle: btnTwoStyle
 		});
 	}
 
-	GenerateProductCard = (data_object,index) => {		
-		return(
+	GenerateProductCard = (data_object, index) => {
+		return (
 			<div className={CARD_CLASS[this.state.cardSize]}>
 				<div className="rcv-card-content">
+					{/* PRODUCT IMAGE */}
 					<div className="rcv-product-image-container rcv-product-image-container-custom">
-						<img 
+						<img
 							src={
-								data_object[this.state.contentKeys.imgKey]===undefined || data_object[this.state.contentKeys.imgKey].trim()===""?
-								PLACEHOLDER
-								:
-								data_object[this.state.contentKeys.imgKey]
-							} 
-							onError={(e)=>{this.onError=null; e.target.src = PLACEHOLDER;}} 
-							alt={"product-"+index} />
+								data_object[this.state.contentKeys.imgKey] === undefined || data_object[this.state.contentKeys.imgKey] === "" ?
+									PLACEHOLDER
+									:
+									data_object[this.state.contentKeys.imgKey]
+							}
+							onError={(e) => { this.onError = null; e.target.src = PLACEHOLDER; }}
+							onClick={(e, ...args) => this.props.imageClickHandler ? this.props.imageClickHandler(...args, e, data_object) : null}
+							alt={"image-" + index} />
 					</div>
-					<div className="rcv-card-text">
-						<div className="rcv-product-text rcv-product-text-custom">
-							<h4 
-								className="rcv-product-name-custom"
-							>
-								{data_object[this.state.contentKeys.cardTitleKey]}
-							</h4>
-							<div className="rcv-product-description rcv-product-description-custom">
-								{data_object[this.state.contentKeys.cardDescriptionKey]}
-							</div>
-						</div>
-						<div className="rcv-product-price">
-							<div 
-								className={
-									data_object[this.state.contentKeys.discountedPriceKey] === undefined || 
-									data_object[this.state.contentKeys.discountedPriceKey] ==="" ?
-									"rcv-original rcv-original-price-custom" : "rcv-original rcv-original-price-custom rcv-strike"
+
+					{this.state.contentKeys.cardTitleKey ||
+						this.state.contentKeys.cardDescriptionKey ||
+						this.state.contentKeys.priceKey ||
+						this.state.contentKeys.discountedPriceKey ||
+						this.props.btnOneText ||
+						this.props.btnTwoText ||
+						this.props.cardControls
+						?
+						<div className="rcv-card-text">
+							<div className="rcv-product-text rcv-product-text-custom">
+								{/* PRODUCT HEADING */}
+								{data_object[this.state.contentKeys.cardTitleKey] &&
+									<h4 className="rcv-product-name-custom">
+										{data_object[this.state.contentKeys.cardTitleKey]}
+									</h4>
 								}
-							>
-								{
-									(data_object[this.state.contentKeys.priceKey])  +  
-										(this.state.contentKeys.priceCurrencyKey === undefined || this.state.contentKeys.priceCurrencyKey===""?
-										""
-										:
-										data_object[this.state.contentKeys.priceCurrencyKey])
+								{/* PRODUCT DESCRIPTION */}
+								{data_object[this.state.contentKeys.cardDescriptionKey] &&
+									<div className="rcv-product-description rcv-product-description-custom">
+										{data_object[this.state.contentKeys.cardDescriptionKey]}
+									</div>
 								}
 							</div>
-							{data_object[this.state.contentKeys.discountedPriceKey] === undefined || 
-							 data_object[this.state.contentKeys.discountedPriceKey] ==="" ?
-								""
-							:
-								<div className="rcv-discount rcv-discount-price-custom">
-									{
-										(data_object[this.state.contentKeys.discountedPriceKey]) +
-										(this.state.contentKeys.discountCurrencyKey === undefined || this.state.contentKeys.discountCurrencyKey===""?
-										""
-										:
-										data_object[this.state.contentKeys.discountCurrencyKey])
+							<div className="rcv-product-price">
+								{/* PRODUCT PRICE WITH AND WITHOUT DISCOUNT */}
+								{data_object[this.state.contentKeys.priceKey] &&
+									<div
+										className={
+											data_object[this.state.contentKeys.discountedPriceKey] === undefined ||
+												data_object[this.state.contentKeys.discountedPriceKey] === "" ?
+												"rcv-original rcv-original-price-custom" : "rcv-original rcv-original-price-custom rcv-strike"
+										}
+									>
+										{
+											(data_object[this.state.contentKeys.priceKey]) +
+											(this.state.contentKeys.priceCurrencyKey === undefined || this.state.contentKeys.priceCurrencyKey === "" ?
+												""
+												:
+												data_object[this.state.contentKeys.priceCurrencyKey])
+										}
+									</div>
+								}
+								{/* PRODUCT NEW DISCOUNTED PRICE */}
+								{data_object[this.state.contentKeys.discountedPriceKey] === undefined ||
+									data_object[this.state.contentKeys.discountedPriceKey] === "" ?
+									""
+									:
+									<div className="rcv-discount rcv-discount-price-custom">
+										{
+											(data_object[this.state.contentKeys.discountedPriceKey]) +
+											(this.state.contentKeys.discountCurrencyKey === undefined || this.state.contentKeys.discountCurrencyKey === "" ?
+												""
+												:
+												data_object[this.state.contentKeys.discountCurrencyKey])
+										}
+									</div>
+								}
+							</div>
+
+							{/* PRODUCT ACTION BUTTONS */}
+							<div className="rcv-product-buttons">
+								{/* CUSTOM CONTROLS */}
+								<React.Fragment>
+									{this.props.cardControls &&
+										this.props.cardControls(data_object)
 									}
-								</div>	
-							}						
+								</React.Fragment>
+								{/* BUTTON ONE */}
+								<React.Fragment>
+									{this.state.btnOneText.trim().length ?
+										<button
+											style={this.state.btnOneStyle}
+											className="rcv-btn-one rcv-btn-one-custom"
+											onClick={(e, ...args) => { btnOneHandler(...args, e, data_object) }}
+										>
+											{this.state.btnOneText}
+										</button>
+										:
+										""
+									}
+								</React.Fragment>
+								{/* BUTTON TWO */}
+								<React.Fragment>
+									{this.state.btnTwoText.trim().length ?
+										<button
+											style={this.state.btnTwoStyle}
+											className="rcv-btn-two rcv-btn-two-custom"
+											onClick={(e, ...args) => { btnTwoHandler(...args, e, data_object) }}
+										>
+											{this.state.btnTwoText}
+										</button>
+										:
+										""
+									}
+								</React.Fragment>
+							</div>
 						</div>
-						<div className="rcv-product-buttons">
-							{this.state.btnOneText.trim().length?
-								<button 
-									style={this.state.btnOneStyle}
-									className="rcv-btn-one rcv-btn-one-custom"
-									onClick={(e,...args)=>{btnOneHandler(...args,e,data_object)}}
-								> 
-									{this.state.btnOneText} 
-								</button>
-							:
-								""
-							}
-							{this.state.btnTwoText.trim().length?
-								<button
-									style={this.state.btnTwoStyle}
-									className="rcv-btn-two rcv-btn-two-custom"
-									onClick={(e,...args)=>{btnTwoHandler(...args,e,data_object)}}
-								> 
-									{this.state.btnTwoText}
-								</button>
-							:
-								""
-							}
-						</div>
-					</div>
+						:
+						null
+					}
 				</div>
 			</div>
-		)
+		);
 	}
 
 	GenerateSkeletonCard = () => {
@@ -197,14 +235,14 @@ export default class Catalog extends Component {
 						</div>
 						<div className="rcv-product-price skeleton">
 							<div className="skeleton-animate"></div>
-								Skeleton Price
+							Skeleton Price
 						</div>
 						<div className="rcv-product-buttons">
 						</div>
 					</div>
 				</div>
 			</div>
-		)
+		);
 	}
 
 	GenerateCatalogView = () => {
@@ -212,7 +250,7 @@ export default class Catalog extends Component {
 			<div className="rcv-container rcv-container-custom">
 				{this.state.productArray.length ?
 					this.state.productArray.map((product, index) => (
-						<div className={OBJECT_CLASS[this.state.cardSize]} key={index}>							
+						<div className={OBJECT_CLASS[this.state.cardSize]} key={index}>
 							{this.GenerateProductCard(product, index)}
 						</div>
 					))
@@ -220,7 +258,7 @@ export default class Catalog extends Component {
 					""
 				}
 			</div>
-		)
+		);
 	}
 
 	GenerateSkeletonView = () => {
@@ -235,11 +273,11 @@ export default class Catalog extends Component {
 				))
 				}
 			</div>
-		)
+		);
 	}
 
 	MasterCatalogView = () => {
-		return(
+		return (
 			<>
 				{this.state.skeletonCards ?
 					this.GenerateSkeletonView()
@@ -247,7 +285,7 @@ export default class Catalog extends Component {
 					this.GenerateCatalogView()
 				}
 			</>
-		)
+		);
 	}
 
 	render() {
@@ -255,7 +293,22 @@ export default class Catalog extends Component {
 			<>
 				{this.MasterCatalogView()}
 			</>
-		)
+		);
 	}
 }
+
+Catalog.propTypes = {
+	data: PropTypes.arrayOf(PropTypes.object).isRequired,
+	contentKeys: PropTypes.object.isRequired,
+	cardSize: PropTypes.string,
+	skeleton: PropTypes.number,
+	btnOneText: PropTypes.string,
+	btnTwoText: PropTypes.string,
+	btnOneHandler: PropTypes.func,
+	btnTwoHandler: PropTypes.func,
+	cardControls: PropTypes.func,  // New Feature
+	imageClickHandler: PropTypes.func, // New Feature
+};
+
+export default Catalog;
 
