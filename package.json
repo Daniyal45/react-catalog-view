@@ -1,9 +1,13 @@
 {
     "name": "react-catalog-view",
-    "version": "1.0.7-alpha1",
+    "version": "1.0.7-alpha3",
     "license": "MIT",
     "author": "Daniyal Hasan Shah, Adnan Ali",
-    "description": "React component to render catalog view for products, services or any other E-commerce applications.",
+    "description": "React component to render catalog view for products, services, image gallery or any other E-commerce applications.",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Daniyal45/react-catalog-view"
+    },
     "keywords": [
         "react-catalog",
         "catalog-view",

@@ -1,3 +1,13 @@
+/*******
+ Description:
+    Catalog Component.
+    Creates the main catalog component
+ Programmed by: 
+    Adnan ALi, Daniyal Hasan Shah
+ Date:
+    16/06/2022   
+ *******/
+
 import React, { Component } from "react";
 import PropTypes from 'prop-types';
 import "./Catalog.css";
