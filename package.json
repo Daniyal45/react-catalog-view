@@ -1,6 +1,6 @@
 {
     "name": "react-catalog-view",
-    "version": "1.0.7-alpha3",
+    "version": "2.0.0",
     "license": "MIT",
     "author": "Daniyal Hasan Shah, Adnan Ali",
     "description": "React component to render catalog view for products, services, image gallery or any other E-commerce applications.",
